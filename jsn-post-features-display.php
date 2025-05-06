@@ -20,3 +20,6 @@ require_once plugin_dir_path( __FILE__ ) . 'includes/functions.php';
 
 // Include the shortcodes file
 require_once plugin_dir_path( __FILE__ ) . 'includes/shortcodes.php';
+
+// Include the FAQ display file
+require_once plugin_dir_path( __FILE__ ) . 'includes/faq-display.php';
