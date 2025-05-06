@@ -10,10 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 function display_post_faqs() {
 	if ( is_product() ) {
 		$faqs = get_field( 'faqs' );
+		$post_title = get_the_title();
 
 		if ( $faqs ) {
 			$output = '<div class="post-faqs accordion-container">';
-			$output .= '<h3>FAQs</h3>'; // Customize heading if needed
+			$output .= '<h2>' . esc_html( $post_title ) . ' FAQ\'s</h2>'; // Customize heading if needed
 			$output .= '<dl class="accordion">';
 			$accordion_id = 0;
 			foreach ( $faqs as $faq ) {
@@ -35,16 +36,25 @@ function display_post_faqs() {
 			$output .= '</dl>';
 			$output .= '</div>';
 
-			// Basic JavaScript for accordion functionality (CORRECTED)
+			// Basic JavaScript for accordion functionality (CLOSE OTHERS)
 			$output .= '<script type="text/javascript">
 				document.addEventListener("DOMContentLoaded", function() {
 					const accordionToggles = document.querySelectorAll(".accordion-toggle");
 
 					accordionToggles.forEach(toggle => {
 						toggle.addEventListener("click", function() {
-							const content = this.parentNode.nextElementSibling; // Get the next sibling of the parent <dt>
+							const content = this.parentNode.nextElementSibling; // Get the next sibling <dd>
 							const expanded = this.getAttribute("aria-expanded") === "true" || false;
 
+							// Close all other open accordions
+							accordionToggles.forEach(otherToggle => {
+								if (otherToggle !== this && otherToggle.getAttribute("aria-expanded") === "true") {
+									otherToggle.setAttribute("aria-expanded", false);
+									otherToggle.parentNode.nextElementSibling.setAttribute("aria-hidden", true);
+								}
+							});
+
+							// Toggle the current accordion
 							this.setAttribute("aria-expanded", !expanded);
 							content.setAttribute("aria-hidden", expanded);
 						});
@@ -60,20 +70,7 @@ function display_post_faqs() {
 				.accordion-content[aria-hidden="false"] {
 					display: block;
 				}
-				.accordion-toggle {
-					width: 100%;
-					padding: 10px;
-					border: 1px solid #ccc;
-					background-color: #f9f9f9;
-					text-align: left;
-					cursor: pointer;
-				}
-				.accordion-toggle:hover {
-					background-color: #eee;
-				}
-				.accordion dt {
-					margin-bottom: 5px;
-				}
+				
 			</style>';
 
 			return $output;
