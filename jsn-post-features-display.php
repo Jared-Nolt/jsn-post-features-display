@@ -109,7 +109,7 @@ function my_plugin_api_call($res, $action, $args) {
     $res = new stdClass();
     $res->name = 'Post Features Display'; // Your plugin's display name
     $res->slug = $plugin_slug;
-    $res->version = ltrim($release_data->tag_name, 'v');
+    $res->version = ltrim($release_data->tag_name, 'Version');
     $res->author = '<a href="https://github.com/' . $github_user . '">' . $github_user . '</a>'; // Your name/link
     $res->homepage = "https://github.com/{$github_user}/{$github_repo}";
     $res->download_link = $release_data->zipball_url;
