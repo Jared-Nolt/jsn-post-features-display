@@ -4,7 +4,7 @@
  * Plugin Name: JSN Post Features Display
  * Plugin URI: https://github.com/Jared-Nolt/jsn-post-features-display
  * Description: Displays the nested categories associated with the current post.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Jared Nolt
  * Author URI: https://github.com/Jared-Nolt
  * License: GPL-2.0+
@@ -26,7 +26,6 @@ require_once plugin_dir_path( __FILE__ ) . 'includes/post-features.php';
 
 /**
  * GitHub Plugin Updater
- *
  * This code enables automatic updates for your WordPress plugin from a public GitHub repository.
  */
 
