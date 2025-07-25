@@ -58,7 +58,7 @@ function my_plugin_check_for_updates($transient) {
 
     // Compare the latest GitHub version with the current plugin version
     $current_version = $transient->checked[$plugin_basename];
-    $github_version = ltrim($release_data->tag_name, 'v'); // Remove 'v' prefix if present
+    $github_version = ltrim($release_data->tag_name, 'Version'); // Remove 'v' prefix if present
 
     if (version_compare($github_version, $current_version, '>')) {
         // A new version is available, prepare the update data
