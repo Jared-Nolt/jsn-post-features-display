@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Plugin Name: JSN Post Features Display
+ * Plugin Name: JSN Product Features Display
  * Plugin URI: https://github.com/Jared-Nolt/jsn-post-features-display
- * Description: Displays the nested categories associated with the current post.
- * Version: 1.0.2
+ * Description: Displays the nested ACF Repeater fields associated with the current product.
+ * Version: 2.0.0
  * Author: Jared Nolt
  * Author URI: https://github.com/Jared-Nolt
  * License: GPL-2.0+
@@ -20,7 +20,6 @@ require_once plugin_dir_path( __FILE__ ) . 'includes/faq-display.php';
 
 // Include the post features file
 require_once plugin_dir_path( __FILE__ ) . 'includes/post-features.php';
-
 
 
 
@@ -107,7 +106,7 @@ function my_plugin_api_call($res, $action, $args) {
     
     // Populate the plugin information object
     $res = new stdClass();
-    $res->name = 'Post Features Display'; // Your plugin's display name
+    $res->name = 'Product Features Display'; // Your plugin's display name
     $res->slug = $plugin_slug;
     $res->version = ltrim($release_data->tag_name, 'v');
     $res->author = '<a href="https://github.com/' . $github_user . '">' . $github_user . '</a>'; // Your name/link
