@@ -4,7 +4,7 @@
  * Plugin Name: JSN Post Features Display
  * Plugin URI: https://github.com/Jared-Nolt/jsn-post-features-display
  * Description: Displays the nested categories associated with the current post.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: Jared Nolt
  * Author URI: https://github.com/Jared-Nolt
  * License: GPL-2.0+
@@ -58,7 +58,7 @@ function my_plugin_check_for_updates($transient) {
 
     // Compare the latest GitHub version with the current plugin version
     $current_version = $transient->checked[$plugin_basename];
-    $github_version = ltrim($release_data->tag_name, 'Version'); // Remove 'v' prefix if present
+    $github_version = ltrim($release_data->tag_name, 'v'); // Remove 'v' prefix if present
 
     if (version_compare($github_version, $current_version, '>')) {
         // A new version is available, prepare the update data
@@ -109,7 +109,7 @@ function my_plugin_api_call($res, $action, $args) {
     $res = new stdClass();
     $res->name = 'Post Features Display'; // Your plugin's display name
     $res->slug = $plugin_slug;
-    $res->version = ltrim($release_data->tag_name, 'Version');
+    $res->version = ltrim($release_data->tag_name, 'v');
     $res->author = '<a href="https://github.com/' . $github_user . '">' . $github_user . '</a>'; // Your name/link
     $res->homepage = "https://github.com/{$github_user}/{$github_repo}";
     $res->download_link = $release_data->zipball_url;
