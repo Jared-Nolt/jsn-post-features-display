@@ -4,7 +4,7 @@
  * Plugin Name: JSN Product Features Display
  * Plugin URI: https://github.com/Jared-Nolt/jsn-post-features-display
  * Description: Displays nested ACF Repeater fields associated with the current product.
- * Version: 2.0.1
+ * Version: 2.1.1
  * Author: Jared Nolt
  * Author URI: https://github.com/Jared-Nolt
  * License: GPL-2.0+
