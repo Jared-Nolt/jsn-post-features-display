@@ -4,7 +4,7 @@
  * Plugin Name: JSN Product Features Display
  * Plugin URI: https://github.com/Jared-Nolt/jsn-post-features-display
  * Description: Displays nested ACF Repeater fields associated with the current product.
- * Version: 2.1.1
+ * Version: 2.2.0
  * Author: Jared Nolt
  * Author URI: https://github.com/Jared-Nolt
  * License: GPL-2.0+
@@ -35,8 +35,8 @@ function my_plugin_check_for_updates($transient) {
     }
 
     // --- CONFIGURATION ---
-    $plugin_slug    = basename(dirname(__FILE__)); // Your plugin's folder name
-    $plugin_basename = plugin_basename(__FILE__); // "your-folder/your-plugin-file.php"
+    $plugin_slug    = basename(dirname(__FILE__));
+    $plugin_basename = plugin_basename(__FILE__);
     $github_user    = 'Jared-Nolt';      // Your GitHub username
     $github_repo    = 'jsn-post-features-display';  // Your GitHub repository name
     // ---------------------
@@ -57,7 +57,7 @@ function my_plugin_check_for_updates($transient) {
 
     // Compare the latest GitHub version with the current plugin version
     $current_version = $transient->checked[$plugin_basename];
-    $github_version = ltrim($release_data->tag_name, 'v'); // Remove 'v' prefix if present
+    $github_version = ltrim($release_data->tag_name, 'v');
 
     if (version_compare($github_version, $current_version, '>')) {
         // A new version is available, prepare the update data
@@ -66,7 +66,7 @@ function my_plugin_check_for_updates($transient) {
         $update_data->plugin = $plugin_basename;
         $update_data->new_version = $github_version;
         $update_data->url = "https://github.com/{$github_user}/{$github_repo}";
-        $update_data->package = $release_data->zipball_url; // The download URL
+        $update_data->package = $release_data->zipball_url;
         $update_data->icons = [
             'default' => 'https://raw.githubusercontent.com/' . $github_user . '/' . $github_repo . '/master/assets/icon-128x128.png' // Optional: path to an icon
         ];
@@ -80,7 +80,7 @@ function my_plugin_check_for_updates($transient) {
 add_filter('plugins_api', 'my_plugin_api_call', 10, 3);
 function my_plugin_api_call($res, $action, $args) {
     // --- CONFIGURATION ---
-    $plugin_slug    = basename(dirname(__FILE__)); // Your plugin's folder name
+    $plugin_slug    = basename(dirname(__FILE__));
     $github_user    = 'Jared-Nolt';      // Your GitHub username
     $github_repo    = 'jsn-post-features-display';  // Your GitHub repository name
     // ---------------------
@@ -109,7 +109,7 @@ function my_plugin_api_call($res, $action, $args) {
     $res->name = 'Product Features Display'; // Your plugin's display name
     $res->slug = $plugin_slug;
     $res->version = ltrim($release_data->tag_name, 'v');
-    $res->author = '<a href="https://github.com/' . $github_user . '">' . $github_user . '</a>'; // Your name/link
+    $res->author = '<a href="https://github.com/' . $github_user . '">' . $github_user . '</a>';
     $res->homepage = "https://github.com/{$github_user}/{$github_repo}";
     $res->download_link = $release_data->zipball_url;
     $res->last_updated = $release_data->published_at;
