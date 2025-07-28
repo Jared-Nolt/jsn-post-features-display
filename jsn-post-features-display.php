@@ -4,7 +4,7 @@
  * Plugin Name: JSN Product Features Display
  * Plugin URI: https://github.com/Jared-Nolt/jsn-post-features-display
  * Description: Displays nested ACF Repeater fields associated with the current product.
- * Version: 2.2.0
+ * Version: 2.2.1
  * Author: Jared Nolt
  * Author URI: https://github.com/Jared-Nolt
  * License: GPL-2.0+
@@ -117,7 +117,7 @@ function my_plugin_api_call($res, $action, $args) {
     // Add changelog/description from the GitHub release body
     require_once(ABSPATH . 'wp-admin/includes/plugin-install.php');
     $res->sections = [
-        'description' => 'Displays the nested categories associated with the current post.',
+        'description' => 'Displays nested ACF Repeater fields associated with the current product.',
         'changelog'   => class_exists('Parsedown') ? Parsedown::instance()->text($release_data->body) : strip_tags($release_data->body, '<p><ul><ol><li><strong><em>'),
     ];
 
